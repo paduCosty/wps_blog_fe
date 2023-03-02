@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-
-
 import './Navbar.css'
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
 
 function NavBar() {
 
@@ -21,65 +21,64 @@ function NavBar() {
     }
 
     return (
-        <nav className="navbar">
-            <div className="navbar-container">
-                <a href="/" className="navbar-logo">
-                    My Website
-                </a>
-                <div className={`menu-icon ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-                    <i className="fa fa-bars"></i>
-                </div>
-                <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <Link className="navbar-brand" to="/">
+                MyWebsite
+            </Link>
+            <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <a href="/home" className="nav-link">
-                            Home
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="/about" className="nav-link">
-                            About
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="/portofolio" className="nav-link">
-                            Portfolio
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="/contact" className="nav-link">
-                            Contact
-                        </a>
-                    </li>
-                    {/* admin */}
-                    <li className="nav-item">
-                        <a href="/admin/users" className="nav-link">
+                        <Link className="nav-link" to="/admin/users">
                             Users
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <a href="/admin/products" className="nav-link">
-                            Products
-                        </a>
+                        <Link className="nav-link" to="/admin/projects">
+                            Projects
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <a href="/admin/testimonials" className="nav-link">
+                        <Link className="nav-link" to="/admin/testimonials">
                             Testimonials
-                        </a>
+                        </Link>
                     </li>
-
-                    {/* {isAuthenticated ? ( */}
-                        <li><button onClick={handleLogout} className="logout">Logout</button></li>
-                    {/* ) : ( */}
-                        <>
-                            <li><Link to="/login" className="login-link">Login</Link></li>
-                            <li><Link to="/register" className="register-link">Register</Link></li>
-                            <li><Link to="/register" className="register-link">Profile</Link></li>
-                        </>
-                    {/* )} */}
+                </ul>
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item dropdown">
+                        <a
+                            className="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            Register / Login
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <Link className="dropdown-item" to="/register">
+                                Register
+                            </Link>
+                            <Link className="dropdown-item" to="/login">
+                                Login
+                            </Link>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </nav>
-
     );
 }
 
